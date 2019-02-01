@@ -1,6 +1,6 @@
 package app;
 
-public class Dia {
+public class Sales {
 
     private int dia;
     private int mes;
@@ -30,9 +30,18 @@ public class Dia {
         this.valor = valor;
     }
 
-    public Dia(int dia, int mes, double valor) {
+    public Sales(int dia, int mes, double valor) {
         this.dia = dia;
         this.mes = mes;
         this.valor = valor;
+    }
+    
+    public Sales(){
+    
+    }
+
+    @Override
+    public String toString() {
+        return "Dia{" + "dia=" + dia + ", mes=" + mes + ", valor=" + valor + '}';
     }
 }
