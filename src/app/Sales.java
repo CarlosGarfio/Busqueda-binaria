@@ -42,6 +42,6 @@ public class Sales {
 
     @Override
     public String toString() {
-        return "Dia{" + "dia=" + dia + ", mes=" + mes + ", valor=" + valor + '}';
+        return "Sales{" + "dia=" + dia + ", mes=" + mes + ", valor=" + valor + '}';
     }
 }

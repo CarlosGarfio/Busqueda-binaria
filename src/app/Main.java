@@ -5,17 +5,20 @@ public class Main {
     public static void main(String[] args) {
 
         Sales dia = new Sales();
-        int m = NoRandomInt(1, 12);
-        dia.setMes(m);
-        dia.setDia(SWITCH(m));
-        dia.setValor(NoRandomDouble(1, 1000));
-        
-        System.out.println(dia.toString());
+
+        for (int i = 0; i < 1_000; i++) {
+            int m = NoRandomInt(1, 12);
+            dia.setMes(m);
+            dia.setDia(SWITCH(m));
+            dia.setValor(NoRandomDouble(1, 1000));
+            System.out.println(dia.toString());
+        }
     }
 
     public static int NoRandomInt(int x, int y) {
         return (int) (Math.abs(Math.floor(Math.random() * (x - y + 1) + y)));
     }
+
     public static double NoRandomDouble(int x, int y) {
         return (double) (Math.abs(Math.floor(Math.random() * (x - y + 1) + y)));
     }
