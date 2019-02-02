@@ -1,7 +1,7 @@
 package app;
 
 public class Sales {
-
+    
     private int dia;
     private int mes;
     private double valor;

@@ -1,17 +1,22 @@
 package app;
 
-public class Main {
+import java.util.ArrayList;
+import java.util.List;
 
+public class Main {
+    
     public static void main(String[] args) {
 
-        Sales dia = new Sales();
-
-        for (int i = 0; i < 1_000; i++) {
-            int m = NoRandomInt(1, 12);
-            dia.setMes(m);
-            dia.setDia(SWITCH(m));
-            dia.setValor(NoRandomDouble(1, 1000));
-            System.out.println(dia.toString());
+        List<Sales> miLista = new ArrayList<Sales>();
+        Sales sales;
+        
+        for (int i = 0; i < 100; i++) {
+            int m = NoRandomInt(0, 13);
+            sales= new Sales(m,SWITCH(m), NoRandomDouble(0, 1001));//Se crea una nueva venta
+            miLista.add(sales);//Se agrega la venta
+        }
+        for (Sales sales1 : miLista) {
+            System.out.println(sales1);
         }
     }
 
@@ -32,14 +37,14 @@ public class Main {
             case 8:
             case 10:
             case 12:
-                return NoRandomInt(1, 31);
+                return NoRandomInt(0, 32);
             case 4:
             case 6:
             case 9:
             case 11:
-                return NoRandomInt(1, 30);
+                return NoRandomInt(0, 31);
             case 2:
-                return NoRandomInt(1, 28);
+                return NoRandomInt(0, 29);
             default:
                 return -1;
         }
