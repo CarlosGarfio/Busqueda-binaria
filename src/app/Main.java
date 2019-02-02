@@ -12,12 +12,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int tamanno = 10;
+        int tamanno = 20;
         Sales sales;
 
         for (int i = 0; i < tamanno; i++) {
             int m = NoRandomInt(0, 13);
-            sales = new Sales(m, SWITCH(m), NoRandomDouble(0, 1001));//Se crea una nueva venta
+            sales = new Sales(SWITCH(m), m, NoRandomDouble(0, 1001));//Se crea una nueva venta
             miLista.add(sales);//Se agrega la venta
         }
         System.out.println(miLista.size());
@@ -31,16 +31,17 @@ public class Main {
         for (Sales sales1 : miLista) {
             System.out.println(sales1);
         }
+
         System.out.print("\nIntroduce el valor que deseas buscar(double): ");
 
         dato = sc.nextDouble();
 
         int resp = binarySearch(0, tamanno);
 
-        if(resp != -1){
+        if (resp != -1) {
             System.out.println("El valor si se encuentra.");
             System.out.println(miLista.get(resp));
-        }else{
+        } else {
             System.out.println("El valor no se encuentra.");
         }
     }
@@ -58,36 +59,6 @@ public class Main {
             return binarySearch(++M, R);
         }
         return -1;
-    }
-
-    //  Ordena por dia
-    public static void InsercionPorDia() {
-        int pos;
-        Sales temp = new Sales();
-        for (int i = 0; i < miLista.size(); i++) {
-            pos = i;
-            temp = new Sales(miLista.get(i).getDia(), miLista.get(i).getMes(), miLista.get(i).getValor());
-            while ((pos > 0) && (miLista.get(pos - 1).getDia() > temp.getDia())) {
-                miLista.set(pos, miLista.get(pos - 1));
-                pos--;
-            }
-            miLista.set(pos, temp);
-        }
-    }
-
-    //  Ordena por mes
-    public static void InsercionPorMes() {
-        int pos;
-        Sales temp = new Sales();
-        for (int i = 0; i < miLista.size(); i++) {
-            pos = i;
-            temp = new Sales(miLista.get(i).getDia(), miLista.get(i).getMes(), miLista.get(i).getValor());
-            while ((pos > 0) && (miLista.get(pos - 1).getMes() > temp.getMes())) {
-                miLista.set(pos, miLista.get(pos - 1));
-                pos--;
-            }
-            miLista.set(pos, temp);
-        }
     }
 
     //  Ordena por valor
