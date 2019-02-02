@@ -4,19 +4,73 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    
+
+    static List<Sales> miLista = new ArrayList<Sales>();
+
     public static void main(String[] args) {
 
-        List<Sales> miLista = new ArrayList<Sales>();
         Sales sales;
-        
-        for (int i = 0; i < 100; i++) {
+
+        for (int i = 0; i < 5; i++) {
             int m = NoRandomInt(0, 13);
-            sales= new Sales(m,SWITCH(m), NoRandomDouble(0, 1001));//Se crea una nueva venta
+            sales = new Sales(m, SWITCH(m), NoRandomDouble(0, 1001));//Se crea una nueva venta
             miLista.add(sales);//Se agrega la venta
         }
+        System.out.println(miLista.size());
+        System.out.println("----------Lista desordenada----------");
         for (Sales sales1 : miLista) {
             System.out.println(sales1);
+        }
+//        System.out.println(miLista.get(0).getDia());
+        System.out.println("----------Lista ordenada----------");
+        InsercionPorValor();
+        for (Sales sales1 : miLista) {
+            System.out.println(sales1);
+        }
+    }
+
+//  Ordena por dia
+    public static void InsercionPorDia() {
+        int pos;
+        Sales temp = new Sales();
+        for (int i = 0; i < miLista.size(); i++) {
+            pos = i;
+            temp = new Sales(miLista.get(i).getDia(), miLista.get(i).getMes(), miLista.get(i).getValor());
+            while ((pos > 0) && (miLista.get(pos - 1).getDia() > temp.getDia())) {
+                miLista.set(pos, miLista.get(pos - 1));
+                pos--;
+            }
+            miLista.set(pos, temp);
+        }
+    }
+
+    //  Ordena por mes
+    public static void InsercionPorMes() {
+        int pos;
+        Sales temp = new Sales();
+        for (int i = 0; i < miLista.size(); i++) {
+            pos = i;
+            temp = new Sales(miLista.get(i).getDia(), miLista.get(i).getMes(), miLista.get(i).getValor());
+            while ((pos > 0) && (miLista.get(pos - 1).getMes()> temp.getMes())) {
+                miLista.set(pos, miLista.get(pos - 1));
+                pos--;
+            }
+            miLista.set(pos, temp);
+        }
+    }
+
+    //  Ordena por valor
+    public static void InsercionPorValor() {
+        int pos;
+        Sales temp = new Sales();
+        for (int i = 0; i < miLista.size(); i++) {
+            pos = i;
+            temp = new Sales(miLista.get(i).getDia(), miLista.get(i).getMes(), miLista.get(i).getValor());
+            while ((pos > 0) && (miLista.get(pos - 1).getValor()> temp.getValor())) {
+                miLista.set(pos, miLista.get(pos - 1));
+                pos--;
+            }
+            miLista.set(pos, temp);
         }
     }
 
